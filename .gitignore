@@ -24,3 +24,5 @@ Thumbs.db
 
 # Base de datos
 /data_1
+# Puntos de control del entrenamiento
+checkpoints/

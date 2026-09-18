@@ -104,3 +104,11 @@ webcolors==25.10.0
 webencodings==0.6.1
 websocket-client==1.9.2
 widgetsnbextension==4.0.16
+scikit-learn==1.9.1
+albumentations==2.0.8
+opencv-python-headless==5.0.0.93
+
+# PyTorch con soporte CUDA 12.6 para GPU NVIDIA
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch==2.14.0+cu126
+torchvision==0.29.0+cu126
