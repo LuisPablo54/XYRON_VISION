@@ -10,7 +10,7 @@ from torch.utils.data import Dataset
 
 
 class DatasetSoldadura(Dataset):
-    """Leo cada imagen con sus etiquetas YOLO y entrego el vector multietiqueta de clases junto con la caja de mayor area."""
+    # Leo cada imagen con sus etiquetas YOLO y entrego el vector multietiqueta de clases junto con la caja de mayor area
 
     def __init__(self, directorio, num_clases, transformaciones):
         self.directorio_imagenes = os.path.join(directorio, 'images')

@@ -16,9 +16,8 @@ def recolectar_etiquetas(dataset):
 
     return matriz
 
-
+# # Devuelvo el peso de cada clase como negativos entre positivos, que es lo que espera pos_weight de BCEWithLogitsLoss. 
 def calcular_peso_clase(etiquetas, num_clases):
-    """Devuelvo el peso de cada clase como negativos entre positivos, que es lo que espera pos_weight de BCEWithLogitsLoss."""
     etiquetas = np.asarray(etiquetas, dtype=np.float32).reshape(-1, num_clases)
     positivos = etiquetas.sum(axis=0)
     negativos = etiquetas.shape[0] - positivos
