@@ -9,8 +9,8 @@ def get_train_transforms(img_size):
     """Devuelvo las transformaciones de entrenamiento y entrego la imagen ya normalizada como tensor de PyTorch."""
     transforms = A.Compose([
         A.HorizontalFlip(p=0.5), # 50% posibilidades de voltear horizontalmente la imagen
-        A.RandomBrightnessContrast(p=0.2), # Posibiliad de que cambie de exposición entre +- 20% 
-        A.Rotate(limit=10, p=0.3),  # Posibilidad de que rote con un limiete de 15 grados
+        A.RandomBrightnessContrast(p=0.3), # Posibiliad de que cambie de exposición entre +- 20% 
+        A.Rotate(limit=15, p=0.3),  # Posibilidad de que rote con un limiete de 15 grados
         A.Resize(img_size, img_size),
         A.Normalize(mean=MEDIA_IMAGENET, std=DESVIACION_IMAGENET),
         ToTensorV2(),
