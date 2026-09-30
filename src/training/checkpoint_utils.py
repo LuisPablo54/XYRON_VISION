@@ -24,18 +24,25 @@ def cargar_modelo(modelo, optimizador, ruta, dispositivo):
 
 
 class ParoTemprano:
-    """Detengo el entrenamiento cuando la perdida de validacion deja de mejorar durante varias epocas seguidas."""
+    """Detengo el entrenamiento cuando la metrica de validacion deja de mejorar durante varias epocas seguidas; con modo 'max' sirve para metricas como el mAP."""
 
-    def __init__(self, paciencia, minima_mejora=0.0):
+    def __init__(self, paciencia, minima_mejora=0.0, modo='min'):
         self.paciencia = paciencia
         self.minima_mejora = minima_mejora
+        self.modo = modo
         self.mejor_valor = None
         self.espera = 0
         self.detener = False
 
+    def es_mejor(self, valor):
+        if self.modo == 'max':
+            return valor > self.mejor_valor + self.minima_mejora
+
+        return valor < self.mejor_valor - self.minima_mejora
+
     def actualizar(self, valor):
         """Devuelvo True solo cuando el valor recibido mejora al mejor registrado, que es la senal para guardar el modelo."""
-        if self.mejor_valor is None or valor < self.mejor_valor - self.minima_mejora:
+        if self.mejor_valor is None or self.es_mejor(valor):
             self.mejor_valor = valor
             self.espera = 0
             return True
